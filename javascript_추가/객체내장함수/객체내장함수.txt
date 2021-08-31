@@ -1,0 +1,55 @@
+객체 내장 함수
+
+const user = {
+    name: 'Mike',
+    age: 30
+}
+
+# Object.assign(): 객체 복제
+const cloneUser = user; 
+=> 복제 x, 객체 참조값만 복제됨
+=> user와 cloneUser는 같은 객체를 바라보고 있음. user를 변경하면 cloneUser도 함께 변경됨
+
+const newUser = Object.assign({초기값}, user); 
+=> 초기객체에 user 병합
+=> 초기객체와 병합하려는 객체에 동일한 프로퍼티가 존재할 경우 초기객체의 프로퍼티가 덮어 씌어짐
+=> 여러 객체 병합도 가능
+   Object.assign(user, {gender: 'female'}, {hobby:'travel'})
+
+# Object.keys(): 키 배열 반환
+Object.keys(user);
+=> ['name', 'age']
+
+# Object.values(): 값 배열 반환
+Object.values(user)
+=> ["Mike", 30]
+
+# Object.entires(): 키/값 배열 반환
+Object.entires(user);
+=> ["name", "Mike"], ["age", 30]
+
+# Object.fromEntires(): 키/값 배열을 객체로
+const arr = [
+    ["name", "Mike"],
+    ["age", 30],
+];
+Object.fromEntires(arr);
+=> {
+    name: "Mike",
+    age: 30
+   }
+
+
+computed property
+
+let a = 'age';
+const user = {
+    name: 'Mike',
+    age: 30        =>       [a]: 30 => [a]는 값 'age'를 의미하고 이를 computed property라 한다
+}
+
+const user = {
+    [1+4]: 5,
+    ["안녕"+"하세요"]: "hello"
+}
+=> {5: 5, 안녕하세요: "hello"}
